@@ -11,24 +11,37 @@ class Person
     @hygiene = 8
   end
 
-  def happiness=(new_value)
+  def self.max_min_helper(new_value)
+    # return value btw 0..10
     if new_value > 10
-      @happiness = 10
+      return 10
     elsif new_value < 0
-      @happiness = 0
+      return 0
     else
-      @happiness = new_value
+      return new_value
     end
   end
 
+  def happiness=(new_value)
+    @happiness = Person.max_min_helper(new_value)
+    # if new_value > 10
+    #   @happiness = 10
+    # elsif new_value < 0
+    #   @happiness = 0
+    # else
+    #   @happiness = new_value
+    # end
+  end
+
   def hygiene=(new_value)
-    if new_value > 10
-      @hygiene = 10
-    elsif new_value < 0
-      @hygiene = 0
-    else
-      @hygiene = new_value
-    end
+    @hygiene = Person.max_min_helper(new_value)
+    # if new_value > 10
+    #   @hygiene = 10
+    # elsif new_value < 0
+    #   @hygiene = 0
+    # else
+    #   @hygiene = new_value
+    # end
   end
 
   def happy?
